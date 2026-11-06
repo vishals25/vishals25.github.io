@@ -1,0 +1,15 @@
+{
+  "name": "Vishal S — Software Engineer",
+  "short_name": "Vishal S",
+  "description": "Portfolio of Vishal S, a software engineer building reliable backend systems with Ruby on Rails, Python and AWS.",
+  "start_url": "__BASE__",
+  "scope": "__BASE__",
+  "display": "standalone",
+  "background_color": "#0C0D0D",
+  "theme_color": "#0C0D0D",
+  "icons": [
+    { "src": "__BASE__icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "__BASE__icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "__BASE__icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

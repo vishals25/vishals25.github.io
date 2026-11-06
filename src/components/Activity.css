@@ -48,8 +48,10 @@
   transition: border-color var(--dur) var(--ease);
 }
 
-.repo:hover {
-  border-color: var(--border-strong);
+@media (hover: hover) {
+  .repo:hover {
+    border-color: var(--border-strong);
+  }
 }
 
 .repo__link {
@@ -92,9 +94,11 @@
   transition: transform var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
-.repo:hover .repo__arrow {
-  color: var(--accent);
-  transform: translate(2px, -2px);
+@media (hover: hover) {
+  .repo:hover .repo__arrow {
+    color: var(--accent);
+    transform: translate(2px, -2px);
+  }
 }
 
 .repo__desc {

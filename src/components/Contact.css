@@ -65,8 +65,10 @@
   color: var(--accent);
 }
 
-.contact__email-link:hover {
-  color: var(--accent);
+@media (hover: hover) {
+  .contact__email-link:hover {
+    color: var(--accent);
+  }
 }
 
 .contact__copy {
@@ -98,8 +100,10 @@
   transition: border-color var(--dur) var(--ease), transform 150ms var(--ease);
 }
 
-.contact__channel:hover {
-  border-color: var(--accent);
+@media (hover: hover) {
+  .contact__channel:hover {
+    border-color: var(--accent);
+  }
 }
 
 .contact__channel:active {
@@ -295,7 +299,6 @@
 
 /* Footer */
 .site-footer {
-  border-top: 1px solid var(--border);
   background: var(--bg-2);
 }
 
@@ -305,7 +308,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 4px 24px;
-  padding-block: 16px;
+  padding-block: 16px calc(16px + env(safe-area-inset-bottom, 0px));
   font-size: var(--fs-small);
   color: var(--text-3);
 }
@@ -324,6 +327,8 @@
   transition: color var(--dur) var(--ease);
 }
 
-.site-footer__links a:hover {
-  color: var(--accent);
+@media (hover: hover) {
+  .site-footer__links a:hover {
+    color: var(--accent);
+  }
 }

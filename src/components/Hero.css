@@ -1,5 +1,5 @@
 .hero {
-  padding-block: clamp(40px, 7vw, 96px) clamp(64px, 9vw, 112px);
+  padding-block: clamp(8px, 1.5vw, 20px) clamp(28px, 4vw, 48px);
 }
 
 .hero__grid {
@@ -132,8 +132,10 @@
   transition: color var(--dur) var(--ease);
 }
 
-.hero__link:hover {
-  color: var(--accent);
+@media (hover: hover) {
+  .hero__link:hover {
+    color: var(--accent);
+  }
 }
 
 .hero__link svg,
@@ -292,6 +294,28 @@
   from {
     opacity: 0;
     transform: translateY(10px);
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    padding-top: 8px;
+  }
+
+  .hero__status {
+    margin-bottom: 20px;
+  }
+
+  .hero__ctas {
+    width: 100%;
+  }
+
+  .hero__ctas .btn {
+    flex: 1 1 100%;
+  }
+
+  .hero__links {
+    gap: 0 16px;
   }
 }
 

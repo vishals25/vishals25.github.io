@@ -1,4 +1,5 @@
 import HeroDiagram from './HeroDiagram';
+import SectionLink from './SectionLink';
 import { ArrowRightIcon, FileIcon, GitHubIcon, LinkedInIcon, PinIcon } from './Icons';
 import './Hero.css';
 
@@ -15,7 +16,7 @@ export default function Hero({ profile }) {
           </p>
 
           <h1 id="hero-title" className="hero__title hero__anim" style={{ '--i': 1 }}>
-            {profile.name}
+            {profile.name}{' '}
             <span className="hero__role">{profile.role}</span>
           </h1>
 
@@ -34,16 +35,16 @@ export default function Hero({ profile }) {
           </ul>
 
           <div className="hero__ctas hero__anim" style={{ '--i': 5 }}>
-            <a className="btn btn-primary" href="#projects">
+            <SectionLink to="projects" className="btn btn-primary">
               View projects
               <ArrowRightIcon />
-            </a>
-            <a className="btn btn-secondary" href="#contact">
+            </SectionLink>
+            <SectionLink to="contact" className="btn btn-secondary">
               Contact me
-            </a>
+            </SectionLink>
           </div>
 
-          <ul className="hero__links hero__anim" style={{ '--i': 6 }} aria-label="Profiles and résumé">
+          <ul className="hero__links hero__anim" style={{ '--i': 6 }} aria-label="Profiles and resume">
             <li>
               <a className="hero__link" href={profile.github} target="_blank" rel="noopener noreferrer">
                 <GitHubIcon /> GitHub<span className="sr-only"> (opens in a new tab)</span>
@@ -56,7 +57,7 @@ export default function Hero({ profile }) {
             </li>
             <li>
               <a className="hero__link" href={resumeHref} target="_blank" rel="noopener">
-                <FileIcon /> Résumé <span className="hero__link-meta">PDF</span>
+                <FileIcon /> Resume <span className="hero__link-meta">PDF</span>
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </li>

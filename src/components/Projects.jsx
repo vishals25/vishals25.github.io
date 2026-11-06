@@ -1,12 +1,13 @@
 import { ArrowUpRightIcon, GitHubIcon } from './Icons';
+import SectionLink from './SectionLink';
 import './Projects.css';
 
 const PIPELINE = [
-  { stage: 'Ingest', title: 'Data sources', items: ['Movebank GPS telemetry', 'eBird & iNaturalist sightings', 'Sentinel-2 via Earth Engine', 'Climate & terrain'] },
-  { stage: 'Clean', title: 'Preprocess', items: ['6σ outlier removal', 'Missing-value handling', 'StandardScaler'] },
-  { stage: 'Encode', title: 'Autoencoder', items: ['256 → 128 → 64 → 32', '32-dim habitat signature'], primary: true },
-  { stage: 'Score', title: 'Similarity', items: ['Cosine', 'Euclidean', 'Reconstruction MSE'] },
-  { stage: 'Explain', title: 'Analyse', items: ['K-means · OPTICS', 'SHAP importance'] },
+  { stage: 'Ingest', title: 'Data sources', items: ['GPS telemetry', 'Satellite imagery', 'Climate records'] },
+  { stage: 'Clean', title: 'Preprocess', items: ['Outlier removal', 'Normalisation'] },
+  { stage: 'Encode', title: 'Autoencoder', items: ['Habitat signature per location'], primary: true },
+  { stage: 'Score', title: 'Similarity', items: ['Match to known habitat'] },
+  { stage: 'Explain', title: 'Analyse', items: ['Clustering', 'SHAP importance'] },
   { stage: 'Ship', title: 'Maps', items: ['Suitability zones', 'Movement patterns'] },
 ];
 
@@ -81,10 +82,12 @@ function CaseStudy({ project }) {
                 <li key={line}>{line}</li>
               ))}
             </ul>
-            <figure className="case__code">
-              <figcaption>model architecture</figcaption>
-              <pre><code>{project.snippet}</code></pre>
-            </figure>
+            {project.snippet && (
+              <figure className="case__code">
+                <figcaption>model architecture</figcaption>
+                <pre><code>{project.snippet}</code></pre>
+              </figure>
+            )}
           </div>
         </section>
 
@@ -161,9 +164,9 @@ export default function Projects({ projects }) {
 
         <p className="projects__more">
           More on{' '}
-          <a className="text-link" href="#activity">
+          <SectionLink to="activity" className="text-link">
             my GitHub activity
-          </a>
+          </SectionLink>
           .
         </p>
       </div>

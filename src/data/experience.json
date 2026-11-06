@@ -1,21 +1,46 @@
 [
   {
     "company": "Rootquotient Technologies",
-    "title": "SDE Intern",
+    "title": "Software Development Engineer",
+    "employment": "Full-time",
     "location": "Chennai, India",
-    "period": "Dec 2025 – May 2026",
-    "summary": "Enterprise Ruby on Rails platform (TRAF) handling pension applications and online registration.",
-    "highlights": [
-      "Resolved edge cases in the pension-application and online-registration flows, making submissions more reliable, and shipped day-to-day production bug fixes in a large legacy codebase.",
-      "Worked on MFA integration, Ping Identity authentication workflows and the scheduled cron jobs that keep the platform running.",
-      "Helped set up the project's initial Docker migration, moving development onto containerized environments.",
-      "Delivered inside a locked-down on-premise environment (VPN and remote desktop), coordinating directly with database, infrastructure and DevOps owners to unblock fixes."
+    "period": "Dec 2025 – Present",
+    "roles": [
+      {
+        "title": "Software Development Engineer",
+        "employment": "Full-time",
+        "period": "Jun 2026 – Present",
+        "highlights": [
+          "Engineered and delivered production features on the legacy Rails pension application: cron job scheduling, MFA integration and Ping Identity authentication workflows.",
+          "Redesigned the pension-application flow with targeted UX improvements, cutting partial and incomplete submissions by over 75%.",
+          "Eliminated a critical database inconsistency where pre-approval registrations persisted alongside approved user records, restoring 100% data integrity for the affected flow."
+        ]
+      },
+      {
+        "title": "SDE Intern",
+        "employment": "Internship",
+        "period": "Dec 2025 – May 2026",
+        "highlights": [
+          "Resolved edge cases in the pension-application and online-registration flows and shipped day-to-day production bug fixes in a large legacy codebase.",
+          "Helped set up the project's initial Docker migration, moving development onto containerised environments.",
+          "Delivered inside a locked-down on-premise environment (VPN and remote desktop), coordinating with database, infrastructure and DevOps owners to unblock fixes."
+        ]
+      }
     ],
-    "tech": ["Ruby on Rails", "PostgreSQL", "Docker", "MFA", "Ping Identity", "Cron"]
+    "summary": "Enterprise Ruby on Rails platform (TRAF) that handles pension applications and online registration for thousands of plan members. Joined as an intern, converted to a full-time SDE in Jun 2026.",
+    "tech": [
+      "Ruby on Rails",
+      "PostgreSQL",
+      "Docker",
+      "MFA",
+      "Ping Identity",
+      "Cron"
+    ]
   },
   {
     "company": "Sálim Ali Centre for Ornithology and Natural History (SACON)",
     "title": "Software Engineering Intern",
+    "employment": "Internship",
     "location": "Coimbatore, India",
     "period": "Jan 2025 – Feb 2025",
     "summary": "Machine-learning research for hornbill conservation.",
@@ -24,12 +49,19 @@
       "Processed satellite and field data into interactive maps that identify priority conservation areas.",
       "Bridged computational methods and ecological research, working alongside the centre's ecologists."
     ],
-    "tech": ["Python", "TensorFlow / Keras", "GeoPandas", "Google Earth Engine", "SHAP"],
+    "tech": [
+      "Python",
+      "TensorFlow / Keras",
+      "GeoPandas",
+      "Google Earth Engine",
+      "SHAP"
+    ],
     "caseStudy": "project-hornbill"
   },
   {
     "company": "CloudTel Solutions",
     "title": "SDE Intern",
+    "employment": "Internship",
     "location": "Remote",
     "period": "Jul 2024 – Aug 2024",
     "summary": "Customer-support tooling with Django and LLMs.",
@@ -38,6 +70,12 @@
       "Added LLM-driven insights over support data using LangChain and LLaMA 2.",
       "Introduced Git branching and review practices to the team, reducing integration conflicts."
     ],
-    "tech": ["Python", "Django", "LangChain", "LLaMA 2", "Git"]
+    "tech": [
+      "Python",
+      "Django",
+      "LangChain",
+      "LLaMA 2",
+      "Git"
+    ]
   }
 ]

@@ -63,13 +63,93 @@
 }
 
 .xp__role {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
   margin-top: 2px;
   font-weight: 500;
   color: var(--accent);
 }
 
-.xp__summary {
+.xp__type {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 5px;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: var(--accent-soft);
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* Role progression inside one company (promotion): each role gets its own bullets */
+.xp__roles {
+  display: grid;
+  gap: 22px;
+  margin-top: 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.xp__roles-item {
+  position: relative;
+  padding-left: 20px;
+}
+
+.xp__roles-item::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text-3);
+  background: var(--bg);
+}
+
+.xp__roles-item:first-child::before {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.xp__roles-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: calc(0.55em + 9px);
+  bottom: -20px;
+  width: 1px;
+  background: var(--border);
+}
+
+.xp__roles-item .xp__role {
+  margin-top: 0;
+}
+
+.xp__roles-item .xp__highlights {
   margin-top: 10px;
+}
+
+.xp__type--ft {
+  border-color: color-mix(in srgb, var(--success) 45%, var(--border));
+  background: color-mix(in srgb, var(--success) 12%, var(--surface));
+  color: var(--success);
+}
+
+.xp__roles-period {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  color: var(--text-3);
+}
+
+.xp__summary {
+  margin-top: 12px;
   color: var(--text-2);
   font-style: italic;
 }

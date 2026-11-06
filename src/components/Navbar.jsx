@@ -1,20 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { FileIcon } from './Icons';
+import SectionLink from './SectionLink';
+import { NAV_LINKS as LINKS, hrefFor, isPlainClick, navigateToSection } from '../navigation';
 import './Navbar.css';
-
-const LINKS = [
-  { id: 'about', label: 'About' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'contact', label: 'Contact' },
-];
 
 const DESKTOP_MQ = '(min-width: 880px)';
 
 export default function Navbar({ profile }) {
-  const [scrolled, setScrolled] = useState(() => window.scrollY > 8);
+  const [scrolled, setScrolled] = useState(false); // false on server + first client render
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   const toggleRef = useRef(null);
@@ -25,11 +19,15 @@ export default function Navbar({ profile }) {
   // Hairline + background once the page has scrolled
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
+    const raf = requestAnimationFrame(onScroll); // sync with a restored scroll position
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
-  // Active-section highlight
+  // Active-section highlight + keep the address bar on the section in view
   useEffect(() => {
     if (!('IntersectionObserver' in window)) return undefined;
     // Observe every section so hero / achievements / activity clear the highlight
@@ -38,7 +36,11 @@ export default function Navbar({ profile }) {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(ids.has(entry.target.id) ? entry.target.id : '');
+          if (!entry.isIntersecting) return;
+          const { id } = entry.target;
+          setActive(ids.has(id) ? id : '');
+          const href = hrefFor(id);
+          if (window.location.pathname !== href) window.history.replaceState(null, '', href);
         });
       },
       { rootMargin: '-40% 0px -55% 0px' },
@@ -84,42 +86,39 @@ export default function Navbar({ profile }) {
   const close = () => setOpen(false);
 
   // Close the sheet first (releasing scroll lock + inert), then jump to the section.
-  // Letting the browser follow the hash while the body is locked leaves the page in place.
+  // Letting the browser follow the link while the body is locked leaves the page in place.
   const navigateFromSheet = (e, id) => {
-    const target = document.getElementById(id);
-    if (!target) return;
+    if (!isPlainClick(e)) return;
     e.preventDefault();
     flushSync(() => setOpen(false));
-    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
-    history.pushState(null, '', `#${id}`);
+    navigateToSection(id);
   };
 
   return (
     <header className={`nav${scrolled ? ' is-scrolled' : ''}${open ? ' is-open' : ''}`}>
       <div className="container nav__inner">
-        <a href="#top" className="nav__brand" onClick={close}>
+        <SectionLink to="top" className="nav__brand" onNavigate={close}>
           <span className="nav__mark" aria-hidden="true">VS</span>
           {profile.name}
-        </a>
+        </SectionLink>
 
         <nav className="nav__desktop" aria-label="Primary">
           <ul className="nav__links" role="list">
             {LINKS.map(({ id, label }) => (
               <li key={id}>
-                <a
-                  href={`#${id}`}
+                <SectionLink
+                  to={id}
                   className={`nav__link${active === id ? ' is-active' : ''}`}
-                  aria-current={active === id ? 'location' : undefined}
+                  aria-current={active === id ? 'page' : undefined}
                 >
                   {label}
-                </a>
+                </SectionLink>
               </li>
             ))}
           </ul>
           <a className="btn btn-secondary nav__resume" href={resumeHref} target="_blank" rel="noopener">
             <FileIcon />
-            Résumé
+            Resume
           </a>
         </nav>
 
@@ -143,9 +142,9 @@ export default function Navbar({ profile }) {
             {LINKS.map(({ id, label }, i) => (
               <li key={id}>
                 <a
-                  href={`#${id}`}
+                  href={hrefFor(id)}
                   className={`nav__sheet-link${active === id ? ' is-active' : ''}`}
-                  aria-current={active === id ? 'location' : undefined}
+                  aria-current={active === id ? 'page' : undefined}
                   onClick={(e) => navigateFromSheet(e, id)}
                 >
                   <span className="nav__sheet-index" aria-hidden="true">
@@ -158,7 +157,7 @@ export default function Navbar({ profile }) {
           </ul>
           <a className="btn btn-primary nav__sheet-resume" href={resumeHref} target="_blank" rel="noopener" onClick={close}>
             <FileIcon />
-            View résumé (PDF)
+            View resume (PDF)
           </a>
         </nav>
       </div>

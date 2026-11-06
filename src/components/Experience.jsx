@@ -20,15 +20,48 @@ export default function Experience({ experience = [], education = [] }) {
 
               <article className="xp__body">
                 <h3 className="xp__company">{role.company}</h3>
-                <p className="xp__role">{role.title}</p>
-                {role.summary && <p className="xp__summary">{role.summary}</p>}
 
-                {role.highlights?.length > 0 && (
-                  <ul className="xp__highlights">
-                    {role.highlights.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
+                {role.roles?.length ? (
+                  <>
+                    {role.summary && <p className="xp__summary">{role.summary}</p>}
+                    <ol className="xp__roles" aria-label={`Roles held at ${role.company}`}>
+                      {role.roles.map((r) => (
+                        <li key={`${r.title}-${r.period}`} className="xp__roles-item">
+                          <p className="xp__role">
+                            {r.title}
+                            {r.employment && (
+                              <span className={`xp__type${r.employment === 'Full-time' ? ' xp__type--ft' : ''}`}>
+                                {r.employment}
+                              </span>
+                            )}
+                            <span className="xp__roles-period">{r.period}</span>
+                          </p>
+                          {r.highlights?.length > 0 && (
+                            <ul className="xp__highlights">
+                              {r.highlights.map((point) => (
+                                <li key={point}>{point}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      ))}
+                    </ol>
+                  </>
+                ) : (
+                  <>
+                    <p className="xp__role">
+                      {role.title}
+                      {role.employment && <span className="xp__type">{role.employment}</span>}
+                    </p>
+                    {role.summary && <p className="xp__summary">{role.summary}</p>}
+                    {role.highlights?.length > 0 && (
+                      <ul className="xp__highlights">
+                        {role.highlights.map((point) => (
+                          <li key={point}>{point}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
                 )}
 
                 <div className="xp__footer">

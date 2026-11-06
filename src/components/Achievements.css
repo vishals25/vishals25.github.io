@@ -14,9 +14,10 @@
 
 .ach__row {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  gap: 6px 16px;
   padding-block: 14px;
   border-bottom: 1px solid var(--border);
 }
@@ -52,13 +53,15 @@
   transition: transform var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
-.ach__main--link:hover .ach__title {
-  color: var(--accent);
-}
+@media (hover: hover) {
+  .ach__main--link:hover .ach__title {
+    color: var(--accent);
+  }
 
-.ach__main--link:hover .ach__arrow {
-  color: var(--accent);
-  transform: translate(2px, -2px);
+  .ach__main--link:hover .ach__arrow {
+    color: var(--accent);
+    transform: translate(2px, -2px);
+  }
 }
 
 .ach__date {

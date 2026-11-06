@@ -2,95 +2,128 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vishal S — Software Engineer · Backend, Python &amp; Ruby on Rails</title>
-  <meta name="description" content="Vishal S is a software engineer in Coimbatore, India, building reliable backend systems, web applications and AI tooling with Python, Ruby on Rails, Django, FastAPI and PostgreSQL.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vishal S – Software Engineer | Ruby on Rails, Python & AWS</title>
+  <meta name="description" content="Vishal S, Software Development Engineer at Rootquotient. Reliable backend systems with Ruby on Rails, Python (Django, FastAPI), PostgreSQL and AWS.">
   <meta name="author" content="Vishal S">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://vishals25.github.io/portfolio/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="%VITE_SITE_URL%">
 
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#FAFAF9" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0C0D0D" media="(prefers-color-scheme: dark)">
+  <meta name="application-name" content="Vishal S">
+  <meta name="apple-mobile-web-app-title" content="Vishal S">
+  <meta name="format-detection" content="telephone=no">
 
   <!-- Open Graph -->
   <meta property="og:type" content="profile">
-  <meta property="og:site_name" content="Vishal S">
-  <meta property="og:title" content="Vishal S — Software Engineer">
-  <meta property="og:description" content="Backend-leaning software engineer building reliable APIs, web apps and AI tooling with Python, Ruby on Rails, Django and FastAPI.">
-  <meta property="og:url" content="https://vishals25.github.io/portfolio/">
-  <meta property="og:image" content="https://vishals25.github.io/portfolio/og-image.jpg">
-  <meta property="og:image:width" content="600">
-  <meta property="og:image:height" content="600">
-  <meta property="og:image:alt" content="Portrait of Vishal S, software engineer">
+  <meta property="og:site_name" content="Vishal S — Software Engineer">
+  <meta property="og:title" content="Vishal S — Software Engineer (Ruby on Rails, Python, AWS)">
+  <meta property="og:description" content="Software Development Engineer at Rootquotient Technologies. Backend systems, APIs and AI tooling with Ruby on Rails, Django, FastAPI, PostgreSQL and AWS.">
+  <meta property="og:url" content="%VITE_SITE_URL%">
+  <meta property="og:image" content="%VITE_SITE_URL%og-card.jpg">
+  <meta property="og:image:secure_url" content="%VITE_SITE_URL%og-card.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vishal S, Software Engineer — Ruby on Rails, Python, PostgreSQL, AWS">
   <meta property="og:locale" content="en_US">
   <meta property="profile:first_name" content="Vishal">
   <meta property="profile:last_name" content="S">
+  <meta property="profile:username" content="vishals25">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Vishal S — Software Engineer">
-  <meta name="twitter:description" content="Backend-leaning software engineer building reliable APIs, web apps and AI tooling with Python, Ruby on Rails, Django and FastAPI.">
-  <meta name="twitter:image" content="https://vishals25.github.io/portfolio/og-image.jpg">
-  <meta name="twitter:image:alt" content="Portrait of Vishal S, software engineer">
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vishal S — Software Engineer (Ruby on Rails, Python, AWS)">
+  <meta name="twitter:description" content="Software Development Engineer at Rootquotient Technologies. Backend systems, APIs and AI tooling with Ruby on Rails, Django, FastAPI, PostgreSQL and AWS.">
+  <meta name="twitter:image" content="%VITE_SITE_URL%og-card.jpg">
+  <meta name="twitter:image:alt" content="Vishal S, Software Engineer — Ruby on Rails, Python, PostgreSQL, AWS">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
-  <!-- Scroll-reveal is opt-in: only when supported and motion is welcome -->
+  <!-- Progressive enhancement gates. Scroll-reveal and the loading screen are opt-in:
+       only when JS runs, the APIs exist and the visitor hasn't asked for reduced motion. -->
   <script>
-    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.classList.add('js-reveal');
-    }
+    (function () {
+      var root = document.documentElement;
+      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if ('IntersectionObserver' in window && !reduce) root.classList.add('js-reveal');
+      if (!reduce) root.classList.add('js-loader');
+    })();
   </script>
+
+  <!-- Loading screen: static markup + inline CSS so it paints with the first frame and
+       lifts on its own timer (~1.1 s) without waiting for the JS bundle. App.jsx removes
+       the node afterwards. Hidden entirely without JS or with reduced motion. -->
+  <style>
+    .loader { display: none; }
+    .js-loader .loader {
+      position: fixed; inset: 0; z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      background: #FAFAF9;
+      animation: loader-out 400ms cubic-bezier(0.16, 1, 0.3, 1) 750ms forwards;
+    }
+    .loader__mark {
+      width: 72px; height: 72px;
+      filter: drop-shadow(0 12px 28px rgb(0 0 0 / 0.18));
+      animation: loader-pulse 1.15s cubic-bezier(0.4, 0, 0.2, 1) 1;
+    }
+    .loader__bg { fill: #111113; }
+    .loader__text { fill: #FAFAF9; font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .loader__bar { fill: #0F766E; transform-origin: 32px 49.5px; animation: loader-bar 1.15s cubic-bezier(0.4, 0, 0.2, 1) 1; }
+    @media (prefers-color-scheme: dark) {
+      .js-loader .loader { background: #0C0D0D; }
+      .loader__bg { fill: #EDEDEA; }
+      .loader__text { fill: #0C0D0D; }
+      .loader__bar { fill: #2DD4BF; }
+    }
+    @media (max-width: 600px) { .loader__mark { width: 56px; height: 56px; } }
+    @keyframes loader-out { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+    @keyframes loader-pulse {
+      0% { opacity: 0.55; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.05); }
+      100% { opacity: 0.55; transform: scale(0.95); }
+    }
+    @keyframes loader-bar { 0%, 100% { transform: scaleX(0.35); } 50% { transform: scaleX(1); } }
+  </style>
 
   <!-- Fonts: two families, loaded without blocking first paint -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://api.github.com">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
   </noscript>
 
-  <script type="application/ld+json">
+  <!-- Fallback structured data for the dev server; the production build replaces this
+       with a full graph generated from src/data (see src/seo.js, scripts/prerender.mjs). -->
+  <script type="application/ld+json" id="ld-json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Vishal S",
-    "jobTitle": "Software Engineer",
-    "description": "Software engineer building reliable backend systems, web applications and AI tooling.",
-    "url": "https://vishals25.github.io/portfolio/",
-    "image": "https://vishals25.github.io/portfolio/og-image.jpg",
-    "email": "mailto:vishalsubramaniam0@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Coimbatore",
-      "addressCountry": "IN"
-    },
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "Coimbatore Institute of Technology"
-    },
-    "sameAs": [
-      "https://github.com/vishals25",
-      "https://www.linkedin.com/in/vishals25"
-    ],
-    "knowsAbout": ["Python", "Ruby on Rails", "Django", "FastAPI", "PostgreSQL", "Docker", "React", "LangChain", "Machine Learning"]
+    "jobTitle": "Software Development Engineer",
+    "url": "%VITE_SITE_URL%",
+    "sameAs": ["https://github.com/vishals25", "https://www.linkedin.com/in/vishals25"]
   }
   </script>
 </head>
 <body>
-  <noscript>
-    <div style="max-width:640px;margin:0 auto;padding:48px 20px;font-family:system-ui,sans-serif;line-height:1.6">
-      <h1>Vishal S</h1>
-      <p><strong>Software Engineer</strong> · Coimbatore, India</p>
-      <p>I build reliable backend systems, web applications and AI-powered tools with Python, Ruby on Rails, Django, FastAPI and PostgreSQL.</p>
-      <p>Email: <a href="mailto:vishalsubramaniam0@gmail.com">vishalsubramaniam0@gmail.com</a> ·
-        <a href="https://github.com/vishals25">GitHub</a> ·
-        <a href="https://www.linkedin.com/in/vishals25">LinkedIn</a> ·
-        <a href="resume.pdf">Résumé (PDF)</a></p>
-    </div>
-  </noscript>
+  <div class="loader" id="loader" aria-hidden="true">
+    <svg class="loader__mark" viewBox="0 0 64 64" width="72" height="72" focusable="false">
+      <rect class="loader__bg" width="64" height="64" rx="14"/>
+      <text class="loader__text" x="32" y="41" text-anchor="middle" font-size="26" font-weight="600" letter-spacing="-1">VS</text>
+      <rect class="loader__bar" x="18" y="48" width="28" height="3" rx="1.5"/>
+    </svg>
+  </div>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

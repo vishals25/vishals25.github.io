@@ -5,28 +5,42 @@
     "type": "Machine learning · Research",
     "context": "With SACON & Coimbatore Institute of Technology",
     "date": "2025",
-    "summary": "An autoencoder-based pipeline that fuses satellite imagery, climate records and GPS telemetry to map where two threatened hornbill species can thrive in Assam, India.",
-    "problem": "Conservation teams need to know which areas can support Great and Wreathed Hornbills. The evidence is scattered across GPS telemetry, citizen-science sightings, satellite imagery and climate records, each in a different format and resolution.",
+    "summary": "An autoencoder-based pipeline that combines satellite imagery, climate records and GPS telemetry to map where two threatened hornbill species can thrive in Northeast India.",
+    "problem": "Conservation teams need to know which areas can support Great and Wreathed Hornbills, but the evidence is scattered across GPS telemetry, sightings, satellite imagery and climate records in different formats and resolutions.",
     "implementation": [
-      "Cleaned telemetry and environmental features: outliers beyond 6σ removed, missing values handled, features normalised with StandardScaler.",
-      "Trained a regularised autoencoder (Leaky ReLU, L2, Adam, 250 epochs) to compress each location's conditions into a 32-dimension habitat signature.",
-      "Scored locations with a combined cosine-similarity, Euclidean-distance and reconstruction-error metric instead of relying on a single distance.",
-      "Clustered habitat and movement patterns with K-means and OPTICS, and used SHAP to explain which variables drive suitability.",
+      "Cleaned and normalised telemetry and environmental features, then trained an autoencoder that compresses each location's conditions into a compact habitat signature.",
+      "Scored locations by similarity to known hornbill habitat, clustered the results into habitat zones, and used SHAP to explain which variables matter most.",
       "Rendered suitability and movement maps with GeoPandas, Folium and Plotly for the ecologists."
     ],
-    "snippet": "Encoder  256 → 128 → 64 → 32   (bottleneck)\nDecoder   32 → 64 → 128 → 256 → output\nActivation LeakyReLU + L2 · Optimiser Adam\nTraining  250 epochs · batch size 64",
     "metrics": [
-      { "value": "87.5%", "label": "Precision / recall / F1" },
-      { "value": "83.3%", "label": "Accuracy" },
-      { "value": "4", "label": "Habitat zones identified" },
-      { "value": "6", "label": "Tagged birds analysed" }
+      {
+        "value": "87.5%",
+        "label": "Precision / recall / F1"
+      },
+      {
+        "value": "83.3%",
+        "label": "Accuracy"
+      },
+      {
+        "value": "4",
+        "label": "Habitat zones identified"
+      },
+      {
+        "value": "6",
+        "label": "Tagged birds analysed"
+      }
     ],
     "findings": [
       "Humidity, dew point and temperature were the strongest drivers of suitability.",
-      "Tracked birds split between strong site fidelity and seasonal migration.",
-      "High-priority conservation regions mapped across Northeast India; the work was written up as a conference paper."
+      "Priority conservation regions were mapped across Northeast India and the work was written up as a conference paper."
     ],
-    "tech": ["Python", "TensorFlow / Keras", "scikit-learn", "SHAP", "GeoPandas", "Google Earth Engine", "Plotly"],
+    "tech": [
+      "Python",
+      "TensorFlow / Keras",
+      "scikit-learn",
+      "SHAP",
+      "GeoPandas"
+    ],
     "github": "https://github.com/vishals25/hornbill-suitability-analysis-using-autoencoders",
     "link": ""
   },
@@ -42,7 +56,14 @@
         "SQLAlchemy ORM on PostgreSQL, with every schema change versioned as an Alembic migration",
         "Auth-protected write endpoints, covered by a pytest suite"
       ],
-      "tech": ["Python", "FastAPI", "SQLAlchemy", "Alembic", "PostgreSQL", "pytest"],
+      "tech": [
+        "Python",
+        "FastAPI",
+        "SQLAlchemy",
+        "Alembic",
+        "PostgreSQL",
+        "pytest"
+      ],
       "github": "https://github.com/vishals25/socio-api",
       "link": ""
     },
@@ -57,7 +78,13 @@
         "Firestore real-time listeners so likes and comments update live without polling",
         "Responsive React UI built with Chakra UI and deployed on Firebase Hosting"
       ],
-      "tech": ["React", "Vite", "Chakra UI", "Firebase", "Firestore"],
+      "tech": [
+        "React",
+        "Vite",
+        "Chakra UI",
+        "Firebase",
+        "Firestore"
+      ],
       "github": "https://github.com/vishals25/fun-gram",
       "link": ""
     },
@@ -72,7 +99,13 @@
         "Django auth for registration and login; Django admin for products, categories and orders",
         "Server-rendered templates with Tailwind CSS on SQLite"
       ],
-      "tech": ["Python", "Django", "Stripe", "SQLite", "Tailwind CSS"],
+      "tech": [
+        "Python",
+        "Django",
+        "Stripe",
+        "SQLite",
+        "Tailwind CSS"
+      ],
       "github": "https://github.com/vishals25/easy-kart",
       "link": ""
     }

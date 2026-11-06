@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import ContactForm from './ContactForm';
+import SectionLink from './SectionLink';
 import { CheckIcon, CopyIcon, FileIcon, GitHubIcon, LinkedInIcon, MailIcon } from './Icons';
 import './Contact.css';
 
@@ -43,7 +44,7 @@ export default function Contact({ profile }) {
   const channels = [
     { href: profile.linkedin, label: 'LinkedIn', detail: 'Connect or message', icon: <LinkedInIcon /> },
     { href: profile.github, label: 'GitHub', detail: `@${profile.githubUser}`, icon: <GitHubIcon /> },
-    { href: resumeHref, label: 'Résumé', detail: 'PDF, one page', icon: <FileIcon /> },
+    { href: resumeHref, label: 'Resume', detail: 'PDF, two pages', icon: <FileIcon /> },
   ];
 
   return (
@@ -126,9 +127,9 @@ export function SiteFooter({ profile }) {
             </a>
           </li>
           <li>
-            <a href="#top">
+            <SectionLink to="top">
               Back to top <span aria-hidden="true">↑</span>
-            </a>
+            </SectionLink>
           </li>
         </ul>
       </div>

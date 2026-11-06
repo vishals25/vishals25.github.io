@@ -64,12 +64,19 @@ function prettyName(name) {
 
 export default function Activity({ profile }) {
   const user = profile.githubUser;
-  const [repos, setRepos] = useState(() => (user ? readCache(user) : null));
-  const [status, setStatus] = useState(() => (repos ? 'ready' : 'idle'));
+  // Always start empty so prerendered HTML and the first client render match
+  const [repos, setRepos] = useState(null);
+  const [status, setStatus] = useState('idle');
   const sectionRef = useRef(null);
   const abortRef = useRef(null);
 
-  const load = useCallback(async () => {
+  const load = useCallback(async ({ useCache = true } = {}) => {
+    const cached = useCache ? readCache(user) : null;
+    if (cached) {
+      setRepos(cached);
+      setStatus('ready');
+      return;
+    }
     abortRef.current?.abort();
     const controller = new AbortController();
     abortRef.current = controller;
@@ -154,7 +161,7 @@ export default function Activity({ profile }) {
             <div className="activity__error" role="alert">
               <p>Couldn&rsquo;t reach GitHub just now. It may be rate-limiting this network.</p>
               <div className="activity__error-actions">
-                <button type="button" className="btn btn-secondary" onClick={load}>
+                <button type="button" className="btn btn-secondary" onClick={() => load({ useCache: false })}>
                   Try again
                 </button>
                 <a className="text-link" href={profile.github} target="_blank" rel="noopener noreferrer">

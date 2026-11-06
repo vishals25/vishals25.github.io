@@ -3,6 +3,7 @@
   top: 0;
   z-index: 100;
   height: var(--nav-h);
+  padding-top: env(safe-area-inset-top, 0px);
   background: color-mix(in srgb, var(--bg) 0%, transparent);
   border-bottom: 1px solid transparent;
   transition:
@@ -91,9 +92,14 @@
   transition: transform 250ms var(--ease);
 }
 
-.nav__link:hover,
 .nav__link.is-active {
   color: var(--text);
+}
+
+@media (hover: hover) {
+  .nav__link:hover {
+    color: var(--text);
+  }
 }
 
 .nav__link.is-active::after {
@@ -146,7 +152,8 @@
   background: var(--bg);
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding-block: 16px 40px;
+  -webkit-overflow-scrolling: touch;
+  padding-block: 16px calc(40px + env(safe-area-inset-bottom, 0px));
   animation: nav-sheet-in 200ms var(--ease);
 }
 

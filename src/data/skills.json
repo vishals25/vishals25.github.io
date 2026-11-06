@@ -8,7 +8,7 @@
     },
     {
       "label": "Backend",
-      "items": ["Ruby on Rails", "Django", "FastAPI", "Flask", "SQLAlchemy", "Alembic", "REST APIs"],
+      "items": ["Ruby on Rails", "Django", "FastAPI", "Flask", "Node.js", "SQLAlchemy", "Alembic", "REST APIs"],
       "core": ["Ruby on Rails", "Django", "FastAPI"]
     },
     {
@@ -18,13 +18,38 @@
     },
     {
       "label": "Databases",
-      "items": ["PostgreSQL", "MySQL", "SQLite", "Firestore"],
+      "items": ["PostgreSQL", "MySQL", "SQLite", "Firestore", "Pinecone (vector DB)"],
       "core": ["PostgreSQL"]
     },
     {
       "label": "AI / ML",
-      "items": ["LangChain", "LLMs (LLaMA 2, Claude API)", "Model Context Protocol", "Pinecone", "Hugging Face", "scikit-learn", "TensorFlow / Keras"],
-      "core": ["LangChain", "LLMs (LLaMA 2, Claude API)"]
+      "items": [
+        "LangChain",
+        "Claude API",
+        "LLMs (LLaMA 2, Claude)",
+        "Model Context Protocol",
+        "Pinecone",
+        "Hugging Face",
+        "scikit-learn",
+        "TensorFlow / Keras",
+        "TensorFlow Lite",
+        "Autoencoders",
+        "YOLOv8 (computer vision)",
+        "LSTM (time-series)",
+        "SHAP",
+        "GeoPandas"
+      ],
+      "core": ["LangChain", "Claude API", "scikit-learn"]
+    },
+    {
+      "label": "Cloud (AWS)",
+      "items": ["EC2", "S3", "RDS", "Elastic Load Balancing (ELB)", "CloudFront", "Auto Scaling", "DigitalOcean"],
+      "core": ["EC2", "S3", "RDS"]
+    },
+    {
+      "label": "Infra & CI/CD",
+      "items": ["Kubernetes", "GitHub Actions", "Argo CD", "Kustomize", "Trivy", "OpenVPN"],
+      "core": ["GitHub Actions"]
     },
     {
       "label": "DevOps & tools",
